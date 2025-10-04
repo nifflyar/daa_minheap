@@ -47,16 +47,13 @@ public class MinHeap {
         if (newVal > current) throw new IllegalArgumentException("New value is greater than current value");
         heap.set(index, newVal);
         tracker.incrementArrayAccesses(1);
-        tracker.incrementDecreaseKey();
         heapifyUp(index);
     }
 
     public void merge(MinHeap other) {
-
         for (Integer v : other.heap) {
             insert(v);
         }
-        tracker.incrementMerge();
     }
 
     private void heapifyUp(int i) {
