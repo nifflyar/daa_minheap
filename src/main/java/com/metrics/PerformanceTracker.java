@@ -11,6 +11,7 @@ public class PerformanceTracker {
     private final AtomicLong extractCount = new AtomicLong(0);
     private final AtomicLong swapCount = new AtomicLong(0);
     private final AtomicLong arrayAccesses = new AtomicLong(0);
+    private final AtomicLong comparisonCount = new AtomicLong(0);
 
 
     private long startTimeNs = 0;
@@ -26,11 +27,13 @@ public class PerformanceTracker {
     public void incrementExtract() { extractCount.incrementAndGet(); }
     public void incrementSwap() { swapCount.incrementAndGet(); }
     public void incrementArrayAccesses(long delta) { arrayAccesses.addAndGet(delta); }
+    public void incrementComparisons(){comparisonCount.incrementAndGet();}
 
     public long getInsertCount() { return insertCount.get(); }
     public long getExtractCount() { return extractCount.get(); }
     public long getSwapCount() { return swapCount.get(); }
     public long getArrayAccesses() { return arrayAccesses.get(); }
+    public long getComparisonCount() { return comparisonCount.get(); }
 
     public double getElapsedMillis() {
         if (startTimeNs == 0) return 0.0;
@@ -43,16 +46,17 @@ public class PerformanceTracker {
         boolean writeHeader = !new java.io.File(filePath).exists();
         try (PrintWriter pw = new PrintWriter(new FileWriter(filePath, true))) {
             if (writeHeader) {
-                pw.println("n,distribution,time_ms,inserts,extracts,swaps,decreaseKeys,merges,arrayAccesses");
+                pw.println("n,distribution,time_ms,inserts,extracts,swaps,arrayAccesses,comparisons");
             }
-            String line = String.format("%d,%s,%.3f,%d,%d,%d,%d",
+            String line = String.format("%d,%s,%.3f,%d,%d,%d,%d,%d",
                     n,
                     distribution,
                     getElapsedMillis(),
                     getInsertCount(),
                     getExtractCount(),
                     getSwapCount(),
-                    getArrayAccesses()
+                    getArrayAccesses(),
+                    getComparisonCount()
             );
             pw.println(line);
         }
@@ -63,6 +67,7 @@ public class PerformanceTracker {
         extractCount.set(0);
         swapCount.set(0);
         arrayAccesses.set(0);
+        comparisonCount.set(0);
         startTimeNs = 0;
         endTimeNs = 0;
     }
@@ -73,6 +78,7 @@ public class PerformanceTracker {
                 getInsertCount(),
                 getExtractCount(),
                 getSwapCount(),
-                getArrayAccesses());
+                getArrayAccesses(),
+                getComparisonCount());
     }
 }

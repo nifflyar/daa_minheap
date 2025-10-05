@@ -60,6 +60,9 @@ public class MinHeap {
         while (i > 0) {
             int p = parent(i);
             tracker.incrementArrayAccesses(2); 
+
+            tracker.incrementComparisons();
+
             if (heap.get(p) <= heap.get(i)) break;
             swap(i, p);
             i = p;
@@ -72,10 +75,12 @@ public class MinHeap {
             int l = left(i), r = right(i), smallest = i;
             if (l < n) {
                 tracker.incrementArrayAccesses(1);
+                tracker.incrementComparisons();
                 if (heap.get(l) < heap.get(smallest)) smallest = l;
             }
             if (r < n) {
                 tracker.incrementArrayAccesses(1);
+                tracker.incrementComparisons();
                 if (heap.get(r) < heap.get(smallest)) smallest = r;
             }
             if (smallest == i) break;
