@@ -71,7 +71,6 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
             MinHeapBenchmark_jmhType l_minheapbenchmark0_0 = _jmh_tryInit_f_minheapbenchmark0_0(control);
 
             control.preSetup();
-            l_minheapbenchmark0_0.setup();
 
 
             control.announceWarmupReady();
@@ -95,9 +94,9 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
                 if (!(e instanceof InterruptedException)) throw e;
             }
             control.preTearDown();
-            l_minheapbenchmark0_0.exportCsvAfterIteration();
 
             if (control.isLastIteration()) {
+                l_minheapbenchmark0_0.exportCsvAfterIteration();
                 f_minheapbenchmark0_0 = null;
             }
             res.allOps += res.measuredOps;
@@ -142,7 +141,6 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
             MinHeapBenchmark_jmhType l_minheapbenchmark0_0 = _jmh_tryInit_f_minheapbenchmark0_0(control);
 
             control.preSetup();
-            l_minheapbenchmark0_0.setup();
 
 
             control.announceWarmupReady();
@@ -166,9 +164,9 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
                 if (!(e instanceof InterruptedException)) throw e;
             }
             control.preTearDown();
-            l_minheapbenchmark0_0.exportCsvAfterIteration();
 
             if (control.isLastIteration()) {
+                l_minheapbenchmark0_0.exportCsvAfterIteration();
                 f_minheapbenchmark0_0 = null;
             }
             res.allOps += res.measuredOps;
@@ -213,7 +211,6 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
             MinHeapBenchmark_jmhType l_minheapbenchmark0_0 = _jmh_tryInit_f_minheapbenchmark0_0(control);
 
             control.preSetup();
-            l_minheapbenchmark0_0.setup();
 
 
             control.announceWarmupReady();
@@ -241,9 +238,9 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
                 if (!(e instanceof InterruptedException)) throw e;
             }
             control.preTearDown();
-            l_minheapbenchmark0_0.exportCsvAfterIteration();
 
             if (control.isLastIteration()) {
+                l_minheapbenchmark0_0.exportCsvAfterIteration();
                 f_minheapbenchmark0_0 = null;
             }
             res.allOps += res.measuredOps * batchSize;
@@ -303,7 +300,6 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
             MinHeapBenchmark_jmhType l_minheapbenchmark0_0 = _jmh_tryInit_f_minheapbenchmark0_0(control);
 
             control.preSetup();
-            l_minheapbenchmark0_0.setup();
 
 
             notifyControl.startMeasurement = true;
@@ -311,9 +307,9 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
             int batchSize = iterationParams.getBatchSize();
             insertAndExtractHalf_ss_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, batchSize, l_minheapbenchmark0_0);
             control.preTearDown();
-            l_minheapbenchmark0_0.exportCsvAfterIteration();
 
             if (control.isLastIteration()) {
+                l_minheapbenchmark0_0.exportCsvAfterIteration();
                 f_minheapbenchmark0_0 = null;
             }
             int opsPerInv = control.benchmarkParams.getOpsPerInvocation();
@@ -355,6 +351,7 @@ public final class MinHeapBenchmark_insertAndExtractHalf_jmhTest {
                 f = com.cli.MinHeapBenchmark.class.getDeclaredField("outputFile");
                 f.setAccessible(true);
                 f.set(val, control.getParam("outputFile"));
+            val.setup();
             f_minheapbenchmark0_0 = val;
         }
         return val;

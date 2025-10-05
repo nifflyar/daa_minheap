@@ -50,7 +50,7 @@ public class MinHeapBenchmark {
     private double lastElapsed;
     private long lastInserts, lastExtracts, lastSwaps, lastArrayAccesses, lastComparisons;
 
-    @Setup(Level.Iteration)
+    @Setup(Level.Trial)
     public void setup() {
         tracker = new PerformanceTracker();
         heap = new MinHeap(tracker);
@@ -107,7 +107,7 @@ public class MinHeapBenchmark {
         lastComparisons = tracker.getComparisonCount();
     }
 
-    @TearDown(Level.Iteration)
+    @TearDown(Level.Trial)
     public void exportCsvAfterIteration() {
         boolean writeHeader = !new java.io.File(outputFile).exists();
         try (PrintWriter pw = new PrintWriter(new FileWriter(outputFile, true))) {
